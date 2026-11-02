@@ -1,0 +1,29 @@
+dataset: Concrete compressive strength vs mix proportions and age
+source:
+  repository: UCI Machine Learning Repository
+  name: Concrete Compressive Strength
+  creator: I-Cheng Yeh
+  doi: 10.24432/C5PK67
+  licence: CC BY 4.0
+  original_paper: "Yeh, I-C. (1998) Cement and Concrete Research 28(12)"
+  downloaded: 2026-11-02
+raw_files: [raw/Concrete_Data.xls, raw/Concrete_Readme.txt]
+row_definition: one compressive-strength test of one mix at one age
+columns:
+  cement:           {unit: kg/m3, type: float}
+  slag:             {unit: kg/m3, type: float, note: "0 = not added (true value)"}
+  fly_ash:          {unit: kg/m3, type: float, note: "0 = not added (true value)"}
+  water:            {unit: kg/m3, type: float}
+  superplasticizer: {unit: kg/m3, type: float, note: "0 = not added (true value)"}
+  coarse_agg:       {unit: kg/m3, type: float}
+  fine_agg:         {unit: kg/m3, type: float}
+  age_days:         {unit: day, type: int}
+  strength_MPa:     {unit: MPa, type: float, role: target}
+  mix_id:           {unit: "-", type: int, note: "derived; identical mix proportions share an id"}
+  w_c:              {unit: "-", type: float, note: "derived; water / cement"}
+missing_value: none in source (NaN would be used)
+unknown:
+  - test standard, specimen geometry, curing conditions are not given in the source
+  - whether duplicate rows are double entries or replicates
+  - duplicates come in groups with identical strength to 6 decimals: copies or averaged values?  
+processing: raw/Concrete_Data.xls -> HW1 notebook, item 4 -> processed/concrete_clean.csv
